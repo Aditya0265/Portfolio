@@ -5,7 +5,7 @@ export const navLinks = [
   { label: 'Projects',     href: '#projects'     },
   { label: 'Experience',   href: '#experience'   },
   { label: 'Education',    href: '#education'    },
-  { label: 'Achievements', href: '#achievements' },
+  //{ label: 'Achievements', href: '#achievements' },
   { label: 'Resume',       href: '#resume'       },
   { label: 'Contact',      href: '#contact'      },
 ]
@@ -99,7 +99,7 @@ export const projects = [
     live:        null,
   },
 ]
-
+/*
 export const achievements = [
   {
     title:  'Oracle Cloud Infrastructure 2025 Certified Foundations Associate',
@@ -138,4 +138,4 @@ export const achievements = [
     icon:   '⚡',
   },
 ]
-
+*/
