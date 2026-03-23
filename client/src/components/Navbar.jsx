@@ -37,16 +37,32 @@ export default function Navbar() {
 
   const mainLinks = navLinks.filter(l => l.label !== 'Resume')
 
+  const resumeLinkStyle = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '6px',
+    padding: '8px 16px',
+    borderRadius: '6px',
+    fontSize: '12px',
+    fontWeight: 500,
+    letterSpacing: '0.06em',
+    textTransform: 'uppercase',
+    border: '1px solid var(--accent)',
+    color: 'var(--accent)',
+    background: 'transparent',
+    transition: 'all 0.2s',
+    textDecoration: 'none',
+  }
+
   return (
     <>
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        background: scrolled ? 'rgba(var(--bg-rgb, 10,10,15),0.92)' : 'transparent',
+        backgroundColor: scrolled ? 'var(--bg)' : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
         borderBottom: scrolled ? '1px solid var(--border)' : 'none',
         transition: 'all 0.3s ease',
         padding: '0 24px',
-        backgroundColor: scrolled ? 'var(--bg)' : 'transparent',
       }}>
         <div style={{
           maxWidth: 'var(--max-w)', margin: '0 auto',
@@ -54,83 +70,59 @@ export default function Navbar() {
           justifyContent: 'space-between', height: '64px',
           gap: '24px',
         }}>
-          {/* Logo */}
-          <button
-            onClick={() => handleNav('#home')}
-            style={{
-              background: 'none', border: 'none',
-              fontFamily: 'var(--font-head)', fontSize: '20px',
-              color: 'var(--accent)', cursor: 'pointer',
-              letterSpacing: '0.02em', flexShrink: 0,
-            }}
-          >
+
+          <button onClick={() => handleNav('#home')} style={{
+            background: 'none', border: 'none',
+            fontFamily: 'var(--font-head)', fontSize: '20px',
+            color: 'var(--accent)', cursor: 'pointer',
+            letterSpacing: '0.02em', flexShrink: 0,
+          }}>
             Aditya<span style={{ color: 'var(--text)' }}>.</span>
           </button>
 
-          {/* Desktop nav links */}
           <ul style={{
             display: 'flex', gap: '28px', listStyle: 'none',
             alignItems: 'center', flex: 1, justifyContent: 'center',
           }} className="desktop-nav">
             {mainLinks.map(link => (
               <li key={link.href}>
-                <button
-                  onClick={() => handleNav(link.href)}
-                  style={{
-                    background: 'none', border: 'none',
-                    fontFamily: 'var(--font-body)', fontSize: '12px',
-                    fontWeight: 500, letterSpacing: '0.08em',
-                    color: active === link.href.replace('#', '') ? 'var(--accent)' : 'var(--muted)',
-                    cursor: 'pointer', textTransform: 'uppercase',
-                    transition: 'color 0.2s',
-                    paddingBottom: '2px',
-                    borderBottom: active === link.href.replace('#', '')
-                      ? '1px solid var(--accent)' : '1px solid transparent',
-                  }}
-                >
+                <button onClick={() => handleNav(link.href)} style={{
+                  background: 'none', border: 'none',
+                  fontFamily: 'var(--font-body)', fontSize: '12px',
+                  fontWeight: 500, letterSpacing: '0.08em',
+                  color: active === link.href.replace('#', '') ? 'var(--accent)' : 'var(--muted)',
+                  cursor: 'pointer', textTransform: 'uppercase',
+                  transition: 'color 0.2s', paddingBottom: '2px',
+                  borderBottom: active === link.href.replace('#', '')
+                    ? '1px solid var(--accent)' : '1px solid transparent',
+                }}>
                   {link.label}
                 </button>
               </li>
             ))}
           </ul>
 
-          {/* Right side — theme toggle + resume button */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }} className="desktop-nav">
             <ThemeToggle />
-            
-              href="/Aditya_Resume.pdf"
-              download
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: '6px',
-                padding: '8px 16px', borderRadius: '6px',
-                fontSize: '12px', fontWeight: 500,
-                letterSpacing: '0.06em', textTransform: 'uppercase',
-                border: '1px solid var(--accent)',
-                color: 'var(--accent)', background: 'transparent',
-                transition: 'all 0.2s', textDecoration: 'none',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = 'var(--bg)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--accent)' }}
+            <button onClick={() => window.open('/Aditya_Resume.pdf', '_blank')}
+             style={resumeLinkStyle}
+             onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.color = 'var(--bg)' }}
+             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--accent)' }}
             >
               <FiDownload size={12} /> Resume
-            </a>
+            </button>
           </div>
 
-          {/* Hamburger */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            style={{
-              display: 'none', background: 'none', border: 'none',
-              color: 'var(--text)', fontSize: '24px', cursor: 'pointer',
-            }}
-            className="hamburger"
-          >
+          <button onClick={() => setMenuOpen(!menuOpen)} style={{
+            display: 'none', background: 'none', border: 'none',
+            color: 'var(--text)', fontSize: '24px', cursor: 'pointer',
+          }} className="hamburger">
             {menuOpen ? <HiX /> : <HiMenuAlt3 />}
           </button>
+
         </div>
       </nav>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <div style={{
           position: 'fixed', top: '64px', left: 0, right: 0,
@@ -141,15 +133,12 @@ export default function Navbar() {
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {navLinks.map(link => (
               <li key={link.href}>
-                <button
-                  onClick={() => handleNav(link.href)}
-                  style={{
-                    background: 'none', border: 'none',
-                    fontFamily: 'var(--font-body)', fontSize: '15px',
-                    color: active === link.href.replace('#', '') ? 'var(--accent)' : 'var(--text)',
-                    cursor: 'pointer', textAlign: 'left', width: '100%',
-                  }}
-                >
+                <button onClick={() => handleNav(link.href)} style={{
+                  background: 'none', border: 'none',
+                  fontFamily: 'var(--font-body)', fontSize: '15px',
+                  color: active === link.href.replace('#', '') ? 'var(--accent)' : 'var(--text)',
+                  cursor: 'pointer', textAlign: 'left', width: '100%',
+                }}>
                   {link.label}
                 </button>
               </li>
