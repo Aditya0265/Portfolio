@@ -156,3 +156,19 @@ img {
   border-radius: 2px;
   margin-bottom: 20px;
 }
+
+[data-theme="light"] {
+  --bg:        #f5f4f0;
+  --bg2:       #eceae3;
+  --bg3:       #e2e0d8;
+  --accent:    #b8952a;
+  --accent2:   #c9a93a;
+  --text:      #1a1a18;
+  --muted:     #5a5850;
+  --border:    rgba(184, 149, 42, 0.2);
+}
+
+/* Smooth theme transition */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.15s ease;
+}
