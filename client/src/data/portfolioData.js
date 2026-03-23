@@ -6,7 +6,6 @@ export const navLinks = [
   { label: 'Experience',   href: '#experience'   },
   { label: 'Education',    href: '#education'    },
   { label: 'Achievements', href: '#achievements' },
-  { label: 'Blog',         href: '#blog'         },
   { label: 'Resume',       href: '#resume'       },
   { label: 'Contact',      href: '#contact'      },
 ]
@@ -140,26 +139,3 @@ export const achievements = [
   },
 ]
 
-export const placeholderBlogs = [
-  {
-    title:   'Getting Started with Docker: What I Learned Building Connecting the Dots',
-    summary: 'A walkthrough of containerizing a FAISS-based NLP application for CPU-only systems — challenges, solutions, and lessons learned.',
-    tags:    ['Docker', 'NLP', 'Python'],
-    date:    '2026-02-01',
-    slug:    'docker-faiss-nlp',
-  },
-  {
-    title:   'Why I Chose MongoDB for AdoptAPaw',
-    summary: 'Comparing SQL vs NoSQL for a pet adoption platform — schema flexibility, adoption request flows, and the real-world trade-offs.',
-    tags:    ['MongoDB', 'Database Design', 'MERN'],
-    date:    '2025-12-10',
-    slug:    'mongodb-adoptapaw',
-  },
-  {
-    title:   'My AWS Cloud Foundations Journey',
-    summary: 'Notes and key takeaways from completing the AWS Academy Cloud Foundations certification — concepts, services, and study tips.',
-    tags:    ['AWS', 'Cloud', 'Certification'],
-    date:    '2024-01-15',
-    slug:    'aws-cloud-foundations',
-  },
-]

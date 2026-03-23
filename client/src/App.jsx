@@ -7,7 +7,6 @@ import Projects from './pages/Projects'
 import Experience from './pages/Experience'
 import Education from './pages/Education'
 import Achievements from './pages/Achievements'
-import Blog from './pages/Blog'
 import Resume from './pages/Resume'
 import Contact from './pages/Contact'
 
@@ -23,7 +22,6 @@ export default function App() {
         <Experience />
         <Education />
         <Achievements />
-        <Blog />
         <Resume />
         <Contact />
       </main>
