@@ -1,7 +1,7 @@
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
-import SectionNav from './components/SectionNav'
+//import SectionNav from './components/SectionNav'
 import About from './pages/About'
 import Skills from './pages/Skills'
 import Projects from './pages/Projects'
@@ -17,7 +17,6 @@ export default function App() {
       <Navbar />
       <main>
         <Home />
-        <SectionNav />
         <About />
         <Skills />
         <Projects />
